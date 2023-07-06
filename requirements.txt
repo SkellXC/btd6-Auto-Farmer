@@ -1,0 +1,4 @@
+pyautogui==0.9.54
+keyboard==0.13.5
+mouse==0.7.1
+pytesseract==9.1.1
