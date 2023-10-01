@@ -1,5 +1,5 @@
-'''
-This file just handles what monkeys are placed where and at
+I '''
+This file just handles what monkeys are placed, where they are placed and at
 what rounds as well as what map it should be on.
 !!If you want to go to the last page, its 12 clicks, not 13 (since your on the first page already)
 If you want to make your own heres the format:
@@ -18,10 +18,10 @@ import pytesseract
 import pyautogui
 
 
-a = False
+homepage = False
 while a:
-    if t.checkScreenFor("heroes"):#Checks if your on the homepage
-        a = False
+    if t.checkScreenFor("heroes"):# Checks if your on the homepage
+        homepage = False
     else:
         sleep(1)
         keyboard.send("esc")
@@ -29,13 +29,15 @@ while a:
 #sleep(6)#To load into the game
 def correctRound(cr,pr,intendedRound):
     if cr == intendedRound:
-        if cr == pr:#cr = current round
-            return False#pr = previous round
+        if cr == pr:# cr = current round
+            return False# pr = previous round
         else:
             return True
-    #This is here because when the round starts, it places everything however since
-    #it checks at fixed intervals, it ends up redoing the same thing until the round
-    #changes. This function stops that. Idk if theres a better way to do it.
+    # This is here because when the round starts, it places everything however since
+    # it checks at fixed intervals, it ends up redoing the same thing until the round
+    # changes. This function stops that. Idk if theres a better way to do it.
+
+# Create the monkeys that will be placed beforehand
 
 
 dart1 = monkeys.Monkey("dart",0.35234375,0.45740740740740743)#topMid
@@ -71,8 +73,8 @@ while 1:
         hero.place()
     if correctRound(currentRound,previousRound,14):
         sub0.upgrade("top",1)
-        #its detected as 147100 so correctRound subtracts in order to get 14
-        #because idk how to fix the image rec (#1)
+        # its detected as 147100 so correctRound subtracts in order to get 14
+        # because idk how to fix the image rec (#1)
     if correctRound(currentRound,previousRound,15):
         sleep(5)
         sub0.upgrade("top",1)
@@ -86,7 +88,7 @@ while 1:
     if correctRound(currentRound,previousRound,23):
         druid1.place()
     if correctRound(currentRound,previousRound,24) or correctRound(currentRound,previousRound,247):
-        #Idk how to fix the image rec (#2) so this is the easiest solution
+        # Idk how to fix the image rec (#2) so this is the easiest solution
          druid1.upgrade("bottom",1)
     if correctRound(currentRound,previousRound,26):
         druid1.upgrade("middle",1)
@@ -108,7 +110,7 @@ while 1:
 
 """
 You get the gist of it.
-I'd recommend finding a youtube tutorial and doing, ideally with the 
+I'd recommend finding a youtube tutorial and making your own gameplan, ideally with the 
 least amount of towers
 
 """
