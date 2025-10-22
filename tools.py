@@ -111,7 +111,7 @@ def getRound():
         round = text.replace("/80","")
     elif "100" in text:
         round = text.replace("/100","")#Gets rid of the other info leaving just the round number
-    round = re.sub(r'\D',"",round)
+    round = re.sub(r'\D',"",str(round))
     if round == "147100":
         round = int(round)
         round -= 147086

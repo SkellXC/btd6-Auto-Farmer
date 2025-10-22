@@ -1,4 +1,4 @@
-I '''
+'''
 This file just handles what monkeys are placed, where they are placed and at
 what rounds as well as what map it should be on.
 !!If you want to go to the last page, its 12 clicks, not 13 (since your on the first page already)
@@ -19,12 +19,12 @@ import pyautogui
 
 
 homepage = False
-while a:
+while homepage:
     if t.checkScreenFor("heroes"):# Checks if your on the homepage
         homepage = False
     else:
         sleep(1)
-        keyboard.send("esc")
+        keyboard.send("esc")  
 #t.enterMap("darkCastle","HARD_MODE","UWCHIMPS_MODE")#Enters the game
 #sleep(6)#To load into the game
 def correctRound(cr,pr,intendedRound):
