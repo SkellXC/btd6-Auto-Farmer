@@ -1,9 +1,9 @@
-
-
 """
-Credit to https://github.com/linus-jansson/btd6farmer
-for these locations and keybinds being sorted. 
-Project was inspired by them
+IMPORTANT!
+All of these positions are set for 1920x1080
+They are unlikely to work for other resolutions.
+If you are interested in creating a set for another resolution, feel free to
+fork the repo or contact me via discord.
 """
 tower_keybinds = {
     "dart" : "q",
@@ -30,49 +30,55 @@ tower_keybinds = {
     "village" : "k",
     "hero" : "u"
 }
-
 hero_positions = {
-    "OBYN"              : [ 0.04140625 , 0.36944444444444446 ],
-    "churchill" : [ 0.19765625 , 0.36944444444444446 ],
-    "striker"     : [ 0.19765625 , 0.16111111111111112 ],
-    "gwen"         : [ 0.11953125 , 0.16111111111111112 ],
-    "quincy"            : [ 0.04140625 , 0.16111111111111112 ],
-    "pat"         : [ 0.19765625 , 0.5777777777777777 ],
-    "ezili"             : [ 0.11953125 , 0.5777777777777777 ],
-    "ben"          : [ 0.04140625 , 0.5777777777777777 ],
-    "etienne"           : [ 0.19765625 , 0.7861111111111111 ],
-    "brickell"  : [ 0.11953125 , 0.7861111111111111 ],
-    "adora"             : [ 0.04140625 , 0.7861111111111111 ],
-    "sauda"             : [ 0.04140625 , 0.925 ],
-    "psi"               : [ 0.11953125 , 0.925 ],
-    "geraldo"           : [ 0.11953125 , 0.36944444444444446 ]
+    "QUINCY": (95, 170),
+    "GWEN": (263, 205),
+    "STRIKER": (394, 231),
+    "OBYN": (100, 417),
+    "DAN": (252, 407),
+    "BENJAMIN": (412, 422),
+    "PAT": (102, 593),
+    "CHURCHILL": (246, 600),
+    "EZILI": (400, 607),
+    "SILAS": (97, 800),
+    "ETIENNE": (266, 805),
+    "SAUDA": (416, 810),
+    "ROSALIA": (102, 972),
+    "ADORA": (257, 974),
+    "BRICKELL": (420, 977),
+    # At 1920x1080, scrolling is required to access the following heros
+    # The coordinates remain the same as they retain the bottom position
+    # once scrolled.
+    "PSI": (102, 972),
+    "GERALDO": (257, 974),
+    "CORVUS": (420, 977),
 }
 
-buttons = {
-    "homePlayButton"            : [ 0.45        , 0.8546296296296296],
-    "HARD_MODE"                 : [ 0.605390625 , 0.3902777777777778 ],
-    "EASY_MODE"                 : [ 0.284765625 , 0.3902777777777778 ],
-    "MEDIUM_MODE"               : [ 0.480078125 , 0.3902777777777778 ],
-    "CHIMPS_MODE"               : [ 0.835546875 , 0.6805555555555556 ],
-    "UWCHIMPS_MODE"             : [0.75625      , 0.6851851851851852 ],#Ultrawide coords
-    "STANDARD_GAME_MODE"        : [ 0.360859375 , 0.5416666666666666 ]
+choose_gamemode_buttons = {
+    "EASY": (626, 402),
+    "MEDIUM": (964, 403),
+    "HARD": (1299, 402),
+    "INFLATION": (1282, 444),
+    "STANDARD": (641, 614),
+    "CHIMPS": (1611, 736),
+}
+
+map_navigation_buttons = {
+    "HOME_PLAY_BUTTON" : (958, 931),
+    "RIGHT_ARROW" : (1652, 430)
 }
 
 upgradeKeybinds = {#Set these to whatever yours are on
-    "top" : 1,
-    "middle" : 2,
-    "bottom" : 3
+    "TOP" : 1,
+    "MIDDLE" : 2,
+    "BOTTOM" : 3
 }
 
-mapLocations = {
-    "darkCastle"               : [ 0.70125 , 0.24305555555555555],
-    "darkCastleRelative"       : [ 0.78125 , 0.24305555555555555],
-    
-    #Second position is for other monitors. First is for 2560x1080
-    "MAP_INDEX_1"               : [ 0.2734375 , 0.24305555555555555 ],#Top left map
-    "MAP_INDEX_2"               : [ 0.5546875 , 0.24305555555555555 ],#Top middle
-    "MAP_INDEX_3"               : [ 0.78125 , 0.24305555555555555 ],#Top right
-    "MAP_INDEX_4"               : [ 0.2734375 , 0.4861111111111111 ],#Bottom left
-    "MAP_INDEX_5"               : [ 0.5546875 , 0.4861111111111111 ],#Bottom middle
-    "MAP_INDEX_6"               : [ 0.78125 , 0.4861111111111111 ],#Bottom right
+map_locations = {
+    "MAP_INDEX_1": (512, 243),
+    "MAP_INDEX_2": (967, 260),
+    "MAP_INDEX_3": (1407, 256),
+    "MAP_INDEX_4": (525, 579),
+    "MAP_INDEX_5": (962, 580),
+    "MAP_INDEX_6": (1390, 578),
 }

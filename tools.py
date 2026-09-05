@@ -9,26 +9,25 @@ import static as fd#fd = fixeddata
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 myconfig = r"--psm 7 --oem 3"#pytesseract config
 csfi = r"--psm 11 --oem 3"#Config for checkScreenForItem
-#-------------------------------------------------------------------------------------------------    
-def findPos():
-    r=0
+
+def getPosition():
     coords = []
-    while keyboard.is_pressed("c") is False:
-        r +=1
-        if r == 1:
-            print("Press 'n' to log the coordinates at any point and 'c' to exit")
-        #pyautogui.displayMousePosition()
-        if keyboard.is_pressed("n"):#When n is pressed it logs the coordinates in a list
-            x, y = pyautogui.position()
-            print(f"Position: {x,y}")
+    print("Press 'n' to log the coordinates.\nPress 'c' to exit")
+    while not keyboard.is_pressed("c"):
+        
+        
+        if keyboard.is_pressed("n"):
+            x,y = pyautogui.position()
+            print(f"({x},{y})")
             sleep(0.5)
             coords.append((x,y))
-            realToStandard(x,"x")
-            realToStandard(y,"y")
-            print("\n")
-    for i in range(0,len(coords)):
-        print(f"{coords[i]}")#Outputs the coordinates stored when "n" is presed
-    
+            print("Press 'n' to log another set of coordinates.\nPress 'c' to exit")
+
+    for x in range(0,len(coords)):
+        print(f"Position {x+1}: {coords[x]}")
+    print("Exited program")
+
+
 #-------------------------------------------------------------------------------------------------    
 
 def click(x,y):

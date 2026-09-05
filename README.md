@@ -15,7 +15,7 @@ it's incomplete and serves as an example. Any chimps or hard mode gameplans can 
 In order to stop the script you can close the game or just the script itself.
 
 ## Issues
-If you have any issues with the script feel free to join my [discord](https://discord.gg/H4gvFZHCej) or add SkellXC
+If you have any issues with the script feel free to join my [discord](https://discord.gg/H4gvFZHCej) and ask any questions!
 
 ## Creating gameplans
 Check out dcChimps to see how the file runs. Generally, each round would look like this:

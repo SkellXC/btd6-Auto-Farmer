@@ -1,3 +1,3 @@
 import tools
 
-tools.findPos()
+tools.getPosition()
