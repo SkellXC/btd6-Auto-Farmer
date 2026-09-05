@@ -35,41 +35,7 @@ def click(x,y):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     sleep(0.2)#Delay needs to be there.
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
-#-------------------------------------------------------------------------------------------------    
-def standardToReal(coordinate,axis):#Turns the decimal points into screen positions
-    if coordinate > 1:
-        print("Error! You seem to be converting the wrong type of coordinates.\n Check the standardToReal function")
-    
-    maxWidth = win32api.GetSystemMetrics(0)#Gets your current resolution
-    maxHeight = win32api.GetSystemMetrics(1)
-    newX = coordinate*maxWidth
-    newY= coordinate*maxHeight#Gets coordinates relevant to your resolution
-    #print(f"{maxWidth}x{maxHeight}\n{newX} x {newY}")
-    newX = int(newX)
-    newY = int(newY)
-    if axis == "x":
-        return newX
-    elif axis == "y":
-        return newY
-#-------------------------------------------------------------------------------------------------    
-def realToStandard(coordinate,axis):
-    if coordinate < 1:
-        print("Error! You seem to be converting the wrong type of coordinates.\n Check the realToStandard function")
-    #axis should be either x or y in lowercase
-    maxWidth = win32api.GetSystemMetrics(0)#Gets your current resolution
-    maxHeight = win32api.GetSystemMetrics(1)
-    newX = coordinate/maxWidth
-    newY = coordinate/maxHeight
-    #print(f"{maxWidth}x{maxHeight}\n{newX} x {newY}")
-    if axis == "x":
-        print(f"x = {newX}")
-        return newX
-    elif axis == "y":
-        print(f"y = {newY}")
-        return newY
-    else:
-        print("Error! Your are doing something wrong.\nFix it.\nCheck the usage of the coordinate switching function")
-#------------------------------------------------------------------------------------------------- 
+
 
 def checkScreenFor(item):
     #Uses config #11 on pytesseract to search for any text (takes 2-3 seconds usually) and returns it
@@ -118,26 +84,26 @@ def getRound():
 #------------------------------------------------------------------------------------------------- 
 
 def enterMap(map,difficulty,gamemode):
-    #standardToReal(fd.buttons["homePlayButton"][0],"x")
-    click(standardToReal(fd.buttons["homePlayButton"][0],"x"),standardToReal(fd.buttons["homePlayButton"][1],"y"))
+    #(fd.buttons["homePlayButton"][0],"x")
+    click((fd.buttons["homePlayButton"][0],"x"),(fd.buttons["homePlayButton"][1],"y"))
     sleep(1)
     goToMapPage(12)
     sleep(1)
-    click(standardToReal(fd.mapLocations[map][0],"x"),standardToReal(fd.mapLocations[map][1],"y"))
+    click(fd.mapLocations[map][0],"x",fd.mapLocations[map][1],"y")
     sleep(1)
-    click(standardToReal(fd.buttons[difficulty][0],"x"),standardToReal(fd.buttons[difficulty][1],"y"))
+    click((fd.buttons[difficulty][0],"x"),(fd.buttons[difficulty][1],"y"))
     sleep(1)
-    click(standardToReal(fd.buttons[gamemode][0],"x"),standardToReal(fd.buttons[gamemode][1],"y"))
+    click((fd.buttons[gamemode][0],"x"),(fd.buttons[gamemode][1],"y"))
 
 
 def goToMapPage(page):
     #sleep(0.1)
-    click(standardToReal(0.630078125,"x"),standardToReal(0.8981481481481481,"y"))
+    click((0.630078125,"x"),(0.8981481481481481,"y"))
     sleep(1)
-    click(standardToReal(0.36640625,"x"),standardToReal(0.8962962962962963,"y"))
+    click((0.36640625,"x"),(0.8962962962962963,"y"))
     sleep(1)
     for x in range(0,page):
-        click(standardToReal(0.7640625,"x"),standardToReal(0.39444444444444443,"y"))
+        click((0.7640625,"x"),(0.39444444444444443,"y"))
         sleep(0.1)
 
 

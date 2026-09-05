@@ -14,12 +14,7 @@ class Monkey:
         self.ycoord = ycoord
         self.name = name#Name monkeys so its easy to search up
         self.keybind = fd.tower_keybinds[name]#gets the keybind from static.py for the monkey
-        self.placed = False
-        if self.xcoord < 1:
-            self.xcoord = t.standardToReal(self.xcoord,"x")
-        if self.ycoord < 1:
-            self.ycoord = t.standardToReal(self.ycoord,"y")
-        
+        self.placed = False        
         
 
     def place(self):
@@ -35,14 +30,12 @@ class Monkey:
             self.placed = True
         
 
-    def upgrade(self,path,level):
+    def upgrade(self,path,level=1):
         path = str(fd.upgradeKeybinds[path])
         t.click(self.xcoord,self.ycoord)#Clicks the monkey
         
-        
         #keyboard.send(path)#Upgrades it
-        sleep(0.1)
-        
+        sleep(0.2)
         #print("pressed key")
         #sleep(1.5)
         for x in range(0,level):
@@ -51,6 +44,7 @@ class Monkey:
             sleep(0.6)
         t.click(self.xcoord,self.ycoord)
         sleep(0.4)
+
     def sell(self):
         t.click(self.xcoord,self.ycoord)
         keyboard.send("backspace")#no more monkey
@@ -65,13 +59,17 @@ class Monkey:
         for x in range(0,targets[target]):
             sleep(0.5)
             keyboard.send("tab")
-#sleep(2)
-#dart = Monkey("dart",0.45,0.8546296296296296)
-#dart.place()    
-#dart.upgrade("bottom",5)
-#dart.upgrade("bottom")
+        
+"""sleep(2)
+dart = Monkey("dart",485,558)
+dart.place()    
+dart.upgrade("BOTTOM",5)
+dart.upgrade("BOTTOM")
+dart.setTarget("last")
+dart.sell()
 
-#br = Monkey("engineer",0.45,0.8546296296296296)
-#br.place()
-#br.upgrade("top",5)
-#br.upgrade("middle",2)
+br = Monkey("engineer",352,722)
+br.place()
+br.upgrade("TOP",5)
+br.setTarget("close")
+br.upgrade("MIDDLE",2)"""
