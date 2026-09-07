@@ -1,15 +1,16 @@
 import pyautogui
 import keyboard
+import numpy as np
 from time import sleep
 import win32api, win32con
 from PIL import Image
+import cv2
 import pytesseract
 import re
 import static as fd#fd = fixeddata
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-myconfig = r"--psm 7 --oem 3"#pytesseract config
+# myconfig = r"--psm 7 --oem 3"#pytesseract config
 csfi = r"--psm 11 --oem 3"#Config for checkScreenForItem
-
 def getPosition():
     coords = []
     print("Press 'n' to log the coordinates.\nPress 'c' to exit")
@@ -55,32 +56,8 @@ def checkScreenFor(item):
     else:
         print(f"checkScreenForItem has not found '{item}'")
         sleep(5)
-#------------------------------------------------------------------------------------------------- 
-def getRound():
-    #Takes a screenshot and then crops it to the rounds part (so its faster) and then gets the round
-    #It then removes the bit after the round (eg /80 or /100) to get the round number.
-    screenshot = pyautogui.screenshot()
-    round = 0
-    toprx = 1726   #0.67421875
-    topry = 0      #0
-    width = 158
-    height = 80
-    roundImage = screenshot.crop((toprx,topry,toprx+width,topry+height))#gets dimensions of cropped image
-    #roundImage.show()
-    text = pytesseract.image_to_string(roundImage,config=myconfig)
-    text =  "".join(text.split())
-    text = text.lower()
-    text = text.replace("round","")
-    #print(text)
-    if "80" in text:
-        round = text.replace("/80","")
-    elif "100" in text:
-        round = text.replace("/100","")#Gets rid of the other info leaving just the round number
-    round = re.sub(r'\D',"",str(round))
-    if round == "147100":
-        round = int(round)
-        round -= 147086
-    return int(round)
+
+    
 #------------------------------------------------------------------------------------------------- 
 
 def enterMap(map,difficulty,gamemode):
