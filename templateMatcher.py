@@ -13,9 +13,9 @@ def getRoundNumber():
     # Take screenshot and crop to round number area
     screenshot = pyautogui.screenshot()
     round = 0
-    toprx = 1434   
+    toprx = 1430   
     topry = 30   
-    width = 128
+    width = 130
     height = 42
     screenshot = screenshot.crop((
         toprx,
@@ -23,15 +23,18 @@ def getRoundNumber():
         toprx+width,
         topry+height
     ))
+    #screenshot.show()
 
     # Convert screenshot to grayscale
     values = np.array(screenshot)
     img_gray = cv2.cvtColor(values, cv2.COLOR_RGB2GRAY)
+    #_, img_gray_bw = cv2.threshold(img_gray, 200, 255, cv2.THRESH_BINARY)
 
     for n in range(0,10):
         x_coord = None
         template = cv2.imread(numberImages[n], cv2.IMREAD_GRAYSCALE)
-        print(numberImages[n])
+        #_, template_bw = cv2.threshold(template, 200, 255, cv2.THRESH_BINARY)
+        # print(numberImages[n])
         h, w = template.shape[:2]
         # Convert template to grayscale
 
@@ -42,20 +45,28 @@ def getRoundNumber():
         loc = np.where(res >= threshold)
         for pt in zip(*loc[::-1]):
             x_coord = int(pt[0])
-            # Gets the x-coordinate to get the numbers position
+            
+            # 5-pixel proximity filter
+            is_duplicate = False
+            for existing_match in collectedNumbers:
+                if abs(existing_match[1] - x_coord) < 5:
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                foundNumber = (n, x_coord)
+                collectedNumbers.append(foundNumber)
+                cv2.rectangle(values, pt, (pt[0] + w, pt[1] + h), (0, 255, 255), 2)
+        
 
-            # cv2.rectangle(values, pt, (pt[0] + w, pt[1] + h), (0, 255, 255), 2)
-            # Draws a rectangle on each found number and displays it
 
-        if x_coord:
-            foundNumber = (n,x_coord)
-            collectedNumbers.append(foundNumber)
 
-    """
-        cv2.imshow('Detected',values)
+
+    
+        """cv2.imshow('Detected',values)
         cv2.waitKey(0) 
-        cv2.destroyAllWindows()
-    """
+        cv2.destroyAllWindows()"""
+    
 
     collectedNumbers = sorted(
         collectedNumbers,
@@ -68,3 +79,5 @@ def getRoundNumber():
     return result
 
 print(getRoundNumber())
+
+
