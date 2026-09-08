@@ -58,14 +58,17 @@ choose_gamemode_buttons = {
     "EASY": (626, 402),
     "MEDIUM": (964, 403),
     "HARD": (1299, 402),
-    "INFLATION": (1282, 444),
+    "DEFLATION": (1282, 444),
     "STANDARD": (641, 614),
     "CHIMPS": (1611, 736),
 }
 
 map_navigation_buttons = {
     "HOME_PLAY_BUTTON" : (958, 931),
-    "RIGHT_ARROW" : (1652, 430)
+    "RIGHT_ARROW" : (1652, 430),
+    "BEGINNER_BUTTON" : (586, 960),
+    "EXPERT_BUTTON" : (1331, 986),
+    
 }
 
 upgradeKeybinds = {#Set these to whatever yours are on
@@ -82,3 +85,5 @@ map_locations = {
     "MAP_INDEX_5": (962, 580),
     "MAP_INDEX_6": (1390, 578),
 }
+
+
