@@ -15,14 +15,13 @@ class Monkey:
         
 
     def place(self):
-        if self.placed is False:
-            t.click(self.xcoord,self.ycoord)
-            sleep(0.5)
-            keyboard.press_and_release(self.keybind)
-            sleep(0.2)
-            t.click(self.xcoord,self.ycoord)
-            sleep(0.5)
-            self.placed = True
+        t.click(self.xcoord,self.ycoord)
+        sleep(0.5)
+        keyboard.press_and_release(self.keybind)
+        sleep(0.2)
+        t.click(self.xcoord,self.ycoord)
+        sleep(0.5)
+            
         
 
     def upgrade(self,path : Literal['TOP', 'MIDDLE', 'BOTTOM'], level=1):
