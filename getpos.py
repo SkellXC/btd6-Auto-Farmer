@@ -1,3 +1,0 @@
-import tools
-
-tools.getPosition()
