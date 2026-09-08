@@ -6,7 +6,8 @@ from time import sleep
 import monkeys
 import keyboard
 
-"""homepage = False
+
+homepage = False
 while not t.isOnHomeScreen() and not keyboard.is_pressed("c") :
     print("Error! You're not on the homescreen.")
     print("Trying again in 1s")
@@ -19,11 +20,13 @@ homepage = True
 gameRunning = True
 sleep(1)
 t.enterMap(1, "MAP_INDEX_2","EASY", "DEFLATION")
-"""
+
 gameRunning = True
 gameStarted = False
 previousRound = 0
 sleep(2)
+iterations = 0
+fails = 0
 
 
 sniper1 = monkeys.Monkey("sniper", 1225, 889)
@@ -35,8 +38,23 @@ while gameRunning:
     sleep(0.5)
     currentRound = getRoundNumber(60)
     sameRound = (currentRound == previousRound)
-    gameEnded = t.handleGameEnd()
-    
+
+    gameEnded = t.checkGameEnd()
+    if gameEnded == 'win':
+        gameStarted = False
+        t.endGame('win')
+        t.enterMap(1, "MAP_INDEX_2","EASY", "DEFLATION")
+        iterations += 1
+        print(f"Fails: {fails}\nIterations: {iterations}")
+        sleep(2)
+    elif gameEnded == 'loss':
+        gameStarted = False
+        t.endGame('loss')
+        t.enterMap(1, "MAP_INDEX_2","EASY", "DEFLATION")
+        fail += 1
+        iterations += 1
+        print(f"Fails: {fails}\nIterations: {iterations}")
+        sleep(2)
         
 
     if currentRound == -1:

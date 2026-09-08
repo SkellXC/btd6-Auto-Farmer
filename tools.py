@@ -67,10 +67,11 @@ def correctRound(correctRound: int, previousRound: int, intendedRound: int):
     # it checks at fixed intervals, it ends up redoing the same thing until the round
     # changes. This function stops that. Idk if theres a better way to do it.
 
-def handleGameEnd():
+def checkGameEnd() -> str:
     try:
         gameWon = pyautogui.locateOnScreen(r'images/next.PNG', confidence=0.8)
-        return 'win'
+        if gameWon:
+            return 'win'
 
     except pyautogui.ImageNotFoundException:
         try:
@@ -81,23 +82,28 @@ def handleGameEnd():
         except pyautogui.ImageNotFoundException:
             return None
 
+
+def endGame(state: Literal['win','loss']) -> bool:
+    state = state.lower()
+
+    if state == 'win':
+        _gameWonSequence()
+        return True
+
+    elif state == 'loss':
+        _gameLostSequence()
+        return True
+    else:
+        return False
+
 def _gameWonSequence():
     click(955,909)# Click 'next'
     sleep(3)
     click(719, 849)# Click 'home'
     sleep(5)
+    print("Back at home screen")
 
 def _gameLostSequence():
     click(719, 849)# Click 'home' on the loss page
     sleep(5)
-
-def endGame(state: Literal['win','loss']):
-    state = state.lower()
-
-    if state == 'win':
-        _gameWonSequence()
-
-    elif state == 'loss':
-        _gameLostSequence()
-    else:
-        return None
+    print("Back at home screen (loss)")
