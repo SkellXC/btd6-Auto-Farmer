@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pyautogui
 
-def getRoundNumber():
+def getRoundNumber(totalRounds) -> int:
     collectedNumbers = []
     numberImages = [r"images/zero.png",r"images/one.png",r"images/two.png",
                     r"images/three.png",r"images/four.png",r"images/five.png",
@@ -59,10 +59,6 @@ def getRoundNumber():
                 cv2.rectangle(values, pt, (pt[0] + w, pt[1] + h), (0, 255, 255), 2)
         
 
-
-
-
-    
         """cv2.imshow('Detected',values)
         cv2.waitKey(0) 
         cv2.destroyAllWindows()"""
@@ -74,10 +70,19 @@ def getRoundNumber():
     )
 
     result = [n[0] for n in collectedNumbers]
-    result = int("".join(str(num) for num in result))
-    # print(result)
-    return result
+    
+    result = ("".join(str(num) for num in result))
+    if totalRounds < 100:
+        result = result[:-2]
+    else:
+        result = result[:-3]
 
-print(getRoundNumber())
+    try:
+        result = int(result)
+        return result
+    except:
+        print("Error! Unable to read a round number")
+        return -1
+    
 
 
