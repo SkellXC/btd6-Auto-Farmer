@@ -59,13 +59,13 @@ def _goToMapPage(page):
 
 def correctRound(correctRound: int, previousRound: int, intendedRound: int):
     if correctRound == intendedRound:
-        if correctRound == previousRound:# cr = current round
-            return False# pr = previous round
+        if correctRound == previousRound:
+            return False
         else:
             return True
-    # This is here because when the round starts, it places everything however since
-    # it checks at fixed intervals, it ends up redoing the same thing until the round
-    # changes. This function stops that. Idk if theres a better way to do it.
+    # The program will attempt to place the towers on every cycle, regardless
+    # of whether it has already been placed. This is designed to keep track of
+    # whether the towers have been placed on the current round.
 
 def checkGameEnd() -> str:
     try:
