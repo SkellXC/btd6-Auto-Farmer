@@ -1,9 +1,9 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import tools as t
-from templateMatcher import getRoundNumber
+import src.tools as t
+from src.templateMatcher import getRoundNumber
 from time import sleep
-import monkeys
+import src.monkeys as monkeys
 import keyboard
 
 

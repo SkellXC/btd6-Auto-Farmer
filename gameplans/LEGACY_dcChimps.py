@@ -7,14 +7,14 @@ If you want to make your own heres the format:
 
 '''
 
-import monkeys
+import src.monkeys as monkeys
 from time import sleep
-import static as fd
+import src.static as fd
 import keyboard
 import pyautogui
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import tools as t
+import src.tools as t
 
 homepage = False
 while homepage:

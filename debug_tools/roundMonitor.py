@@ -2,8 +2,8 @@ from time import sleep
 import keyboard
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import tools as t
-import templateMatcher
+import src.tools as t
+import src.templateMatcher as templateMatcher
 
 def checkRounds(interval: int):
     rounds = []
